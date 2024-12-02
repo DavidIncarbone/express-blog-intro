@@ -17,6 +17,10 @@ app.get("/", (req, res) => {
     res.send("<h1>Server del mio blog</h1>")
 })
 
+app.all("*", (req, res) => {
+    res.status(404).send("<h1> Not Found !</h1>")
+})
+
 // Server Listen
 
 app.listen(PORT, () => {
