@@ -20,27 +20,36 @@ app.get("/", (req, res) => {
 
 app.get("/bacheca", (req, res) => {
 
+
     const nomePiatto = req.query.titolo;
     console.log(nomePiatto);
-    let piatti = [...iMieiPiatti];
+    let piatti = {
+
+        counter: 5,
+        data: [...iMieiPiatti],
+    }
+
     if (nomePiatto) {
 
-        piatti = iMieiPiatti.find((piatto) => piatto.titolo.toLowerCase() === nomePiatto.toLowerCase())
-    } else {
+        piatti.counter = 1
+        piatti.data = iMieiPiatti.find((piatto) => piatto.titolo.toLowerCase() === nomePiatto.toLowerCase())
+        counter = 1;
 
     }
-    if (!piatti) {
+    if (!piatti.data) {
+
+
         piatti = {
 
+            counter: 0,
             error: "Piatto non trovato"
+
         }
     }
+
     res.json(piatti)
 
 })
-
-
-
 
 
 app.all("*", (req, res) => {
