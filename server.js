@@ -19,8 +19,29 @@ app.get("/", (req, res) => {
 })
 
 app.get("/bacheca", (req, res) => {
-    res.send(iMieiPiatti)
+
+    const nomePiatto = req.query.titolo;
+    console.log(nomePiatto);
+    let piatti = [...iMieiPiatti];
+    if (nomePiatto) {
+
+        piatti = iMieiPiatti.find((piatto) => piatto.titolo.toLowerCase() === nomePiatto.toLowerCase())
+    } else {
+
+    }
+    if (!piatti) {
+        piatti = {
+
+            error: "Piatto non trovato"
+        }
+    }
+    res.json(piatti)
+
 })
+
+
+
+
 
 app.all("*", (req, res) => {
     res.status(404).send("<h1> Not Found !</h1>")
