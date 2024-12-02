@@ -11,10 +11,15 @@ app.use(express.static("public"))
 const iMieiPiatti = require("./blog.js");
 
 
+
 //Route
 
 app.get("/", (req, res) => {
     res.send("<h1>Server del mio blog</h1>")
+})
+
+app.get("/bacheca", (req, res) => {
+    res.send(iMieiPiatti)
 })
 
 app.all("*", (req, res) => {
