@@ -27,9 +27,6 @@ app.get("/", (req, res) => {
 app.use("/bacheca", postsRouter);
 
 
-
-
-
 app.all("*", (req, res) => {
     res.status(404).send("<h1> Not Found !</h1>")
 })

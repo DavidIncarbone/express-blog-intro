@@ -6,7 +6,7 @@ const iMieiPiatti = require("../data/blog");
 
 
 // **INDEX**
-// All my list with filter system 
+
 
 router.get("/", (req, res) => {
 
@@ -37,7 +37,7 @@ router.get("/", (req, res) => {
 })
 
 //** Show**
-// Single post
+
 
 router.get("/:id", (req, res) => {
     const id = parseInt(req.params.id);
@@ -58,5 +58,30 @@ router.get("/:id", (req, res) => {
     }
 
 })
+
+//**  Store **
+router.post("/", (req, res) => {
+    res.send("Creazione nuovo piatto");
+});
+
+
+
+//** Update **
+router.put("/:id", (req, res) => {
+    res.send("Modifica totale del piatto");
+});
+
+
+//** Modify **
+router.patch("/:id", (req, res) => {
+    res.send("Modifica parziale del piatto");
+});
+
+
+
+//** Destroy **
+router.delete("/:id", (req, res) => {
+    res.send("Eliminazione del piatto");
+});
 
 module.exports = router;
