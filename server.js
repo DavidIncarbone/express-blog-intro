@@ -8,7 +8,7 @@ app.use(express.static("public"))
 
 // Import Array
 
-const iMieiPiatti = require("./blog.js");
+const iMieiPiatti = require("./data/blog.js");
 
 
 
@@ -31,23 +31,13 @@ app.get("/bacheca", (req, res) => {
 
     if (nomePiatto) {
 
-        piatti.counter = 1
-        piatti.data = iMieiPiatti.find((piatto) => piatto.titolo.toLowerCase() === nomePiatto.toLowerCase())
-        counter = 1;
+        piatti.data = iMieiPiatti.filter((piatto) => piatto.titolo.toLowerCase().includes(nomePiatto.toLowerCase()))
+        piatti.counter = piatti.data.length
+
 
     }
-    if (!piatti.data) {
-
-
-        piatti = {
-
-            counter: 0,
-            error: "Piatto non trovato"
-
-        }
-    }
-
     res.json(piatti)
+
 
 })
 
