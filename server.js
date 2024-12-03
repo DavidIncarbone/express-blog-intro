@@ -6,6 +6,10 @@ const PORT = 3000;
 const url = `http://localhost:${PORT}`;
 app.use(express.static("public"))
 
+// Import routers
+
+const postsRouter = require("./routers/posts.js")
+
 // Import Array
 
 const iMieiPiatti = require("./data/blog.js");
@@ -17,6 +21,12 @@ const iMieiPiatti = require("./data/blog.js");
 app.get("/", (req, res) => {
     res.send("<h1>Server del mio blog</h1>")
 })
+
+// Routers system
+
+app.use("/bacheca", postsRouter);
+
+
 
 
 

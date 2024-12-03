@@ -41,7 +41,22 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     const id = parseInt(req.params.id);
+    const piattoScelto = iMieiPiatti.find((piatto) => piatto.id === id)
 
 
+    if (piattoScelto) {
+        res.json({
+            success: true,
+            piattoScelto,
+        });
+    } else {
+        res.status(404);
+        res.json({
+            success: false,
+            message: "Il piatto non esiste",
+        });
+    }
 
 })
+
+module.exports = router;
