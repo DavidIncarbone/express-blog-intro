@@ -18,28 +18,6 @@ app.get("/", (req, res) => {
     res.send("<h1>Server del mio blog</h1>")
 })
 
-app.get("/bacheca", (req, res) => {
-
-
-    const nomePiatto = req.query.titolo;
-    console.log(nomePiatto);
-    let piatti = {
-
-        counter: 5,
-        data: [...iMieiPiatti],
-    }
-
-    if (nomePiatto) {
-
-        piatti.data = iMieiPiatti.filter((piatto) => piatto.titolo.toLowerCase().includes(nomePiatto.toLowerCase()))
-        piatti.counter = piatti.data.length
-
-
-    }
-    res.json(piatti)
-
-
-})
 
 
 app.all("*", (req, res) => {
